@@ -1,6 +1,5 @@
 
-const apiUdacity = "https://reactnd-books-api.udacity.com";
-const apiGoogle = "https://www.googleapis.com/books/v1/volumes";
+const api = "https://reactnd-books-api.udacity.com"
 
 
 // Generate a unique token for storing your bookshelf data on the backend server.
@@ -14,17 +13,17 @@ const headers = {
 }
 
 export const get = (bookId) =>
-  fetch(`${apiUdacity}/books/${bookId}`, { headers })
+  fetch(`${api}/books/${bookId}`, { headers })
     .then(res => res.json())
     .then(data => data.book)
 
 export const getAll = () =>
-  fetch(`${apiUdacity}/books`, { headers })
+  fetch(`${api}/books`, { headers })
     .then(res => res.json())
     .then(data => data.books)
 
 export const update = (book, shelf) =>
-  fetch(`${apiUdacity}/books/${book.id}`, {
+  fetch(`${api}/books/${book.id}`, {
     method: 'PUT',
     headers: {
       ...headers,
@@ -34,13 +33,12 @@ export const update = (book, shelf) =>
   }).then(res => res.json())
 
 export const search = (query) =>
-  fetch(`${apiGoogle}?q=${query}`, {
-    method: 'GET',
-    // The maximum number of elements to return with this request (Max 40) (maxResults)
-    maxResults: 40,
-    // Restrict results to books or magazines (or both) (printType)
-    type: 'books',
-    // Order results by relevance or newest (orderBy)
-    orderBy: 'relevance',
+  fetch(`${api}/search`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ query })
   }).then(res => res.json())
-    .then(data => data.items)
+    .then(data => data.books)

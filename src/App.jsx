@@ -8,13 +8,13 @@ import SearchBooks from './components/SearchBooks';
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
-      console.log(this.state.books);
+      // console.log(this.state.books);
     });
   }
 
@@ -37,6 +37,7 @@ class BooksApp extends React.Component {
                 this.addBook(book);
                 history.push('/');
               }}
+              onSearchBook={this.searchBook}
             />
           )}
         />
