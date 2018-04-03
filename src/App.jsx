@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import SearchBooksBar from './SearchBooksBar';
+import SearchBooksResults from './SearchBooksResults';
 
 class BooksApp extends React.Component {
   state = {
@@ -271,9 +272,7 @@ class BooksApp extends React.Component {
         <Route path="/search" render={({ history }) => (
             <div className="search-books">
               <SearchBooksBar />
-              <div className="search-books-results">
-                <ol className="books-grid" />
-              </div>
+              <SearchBooksResults />
             </div>
           )}
         />
