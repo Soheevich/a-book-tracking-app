@@ -33,14 +33,14 @@ export const update = (book, shelf) =>
     body: JSON.stringify({ shelf })
   }).then(res => res.json())
 
-export const search = (query) =>
-  fetch(`${apiGoogle}?q=${query}`, {
-    method: 'GET',
-    // The maximum number of elements to return with this request (Max 40) (maxResults)
-    maxResults: 40,
-    // Restrict results to books or magazines (or both) (printType)
-    type: 'books',
-    // Order results by relevance or newest (orderBy)
-    orderBy: 'relevance',
+export const searchInTitle = (query) =>
+  fetch(`${apiGoogle}?q=intitle:${query}&maxResults=20`, {
+    method: 'GET'
+  }).then(res => res.json())
+    .then(data => data.items)
+
+export const searchInAuthor = (query) =>
+  fetch(`${apiGoogle}?q=inauthor:${query}&maxResults=20`, {
+    method: 'GET'
   }).then(res => res.json())
     .then(data => data.items)

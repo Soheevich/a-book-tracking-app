@@ -6,13 +6,20 @@ import sortBy from 'sort-by';
 
 class SearchBar extends Component {
   state = {
-    query: ''
+    author: '',
+    title: ''
   };
 
-  updateQuery = query => {
-    this.setState({ query });
+  updateTitle = title => {
+    this.setState({ title });
 
-    if (query !== '') this.props.onBookSearch(query);
+    if (title !== '') this.props.onTitleSearch(title);
+  };
+
+  updateAuthor = author => {
+    this.setState({ author });
+
+    if (author !== '') this.props.onAuthorSearch(author);
   };
 
   render() {
@@ -24,9 +31,15 @@ class SearchBar extends Component {
         <div className="search-books-input-wrapper">
           <input
             type="text"
-            placeholder="Search by title or author"
-            value={this.state.query}
-            onChange={(event) => this.updateQuery(event.target.value)}
+            placeholder="Search by title"
+            value={this.state.title}
+            onChange={(event) => this.updateTitle(event.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Search by author"
+            value={this.state.author}
+            onChange={(event) => this.updateAuthor(event.target.value)}
           />
         </div>
       </div>
