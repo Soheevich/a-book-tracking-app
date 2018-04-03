@@ -3,8 +3,8 @@ import { Route, Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import ListBooks from './components/ListBooks';
-import SearchBooksBar from './components/SearchBooksBar';
-import SearchBooksResults from './components/SearchBooksResults';
+import SearchBooks from '.components/SearchBooks';
+
 
 class BooksApp extends React.Component {
   state = {
@@ -26,10 +26,12 @@ class BooksApp extends React.Component {
           )}
         />
         <Route path="/search" render={({ history }) => (
-            <div className="search-books">
-              <SearchBooksBar />
-              <SearchBooksResults />
-            </div>
+            <SearchBooks
+              onAddBook={(book) => {
+                this.addBook(book);
+                history.push('/');
+              }}
+            />
           )}
         />
       </div>

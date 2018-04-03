@@ -5,10 +5,6 @@ import escapeRegExp from 'escape-string-regexp';
 import sortBy from 'sort-by';
 
 class SearchBar extends Component {
-  static propTypes = {
-    books: PropTypes.array.isRequired,
-  }
-
   state = {
     query: ''
   };
@@ -33,7 +29,7 @@ class SearchBar extends Component {
       showingBooks = books;
     }
 
-    showingBooks.sort(sortBy('name'));
+    if (showingBooks) showingBooks.sort(sortBy('name'));
 
     return (
       <div className="search-books-bar">
