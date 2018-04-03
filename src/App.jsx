@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import ListBooks from './components/ListBooks';
-import SearchBooks from '.components/SearchBooks';
+import SearchBooks from './components/SearchBooks';
 
 
 class BooksApp extends React.Component {
@@ -15,6 +15,12 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
       console.log(this.state.books);
+    });
+  }
+
+  addBook(book) {
+    this.setState((prevState, book) => {
+      return {books: prevState.books.push(book)};
     });
   }
 

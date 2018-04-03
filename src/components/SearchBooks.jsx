@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import SearchBooksBar from './components/SearchBooksBar';
-import SearchBooksResults from './components/SearchBooksResults';
+import SearchBooksBar from './SearchBooksBar';
+import SearchBooksResults from './SearchBooksResults';
 
 class SearchBooks extends Component {
-  static propTypes = {
-    books: PropTypes.array,
-  }
-
   state = {
-    books: books || [],
+    books: this.props.books || [],
   }
 
-  updateBooksList() {
-    this.setState({ books });
+  updateBooksList(props) {
+    this.setState({ books: this.props.books});
   }
 
   render() {
     return (
-            <div className="search-books">
-              <SearchBooksBar onBooksUpdate={updateBooksList}/>
-              <SearchBooksResults books={this.state.books}/>
-            </div>
+      <div className="search-books">
+        <SearchBooksBar onBooksUpdate={this.updateBooksList}/>
+        <SearchBooksResults booksList={this.state.books}/>
+      </div>
     );
   }
 }
