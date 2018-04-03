@@ -5,6 +5,10 @@ import escapeRegExp from 'escape-string-regexp';
 import sortBy from 'sort-by';
 
 class SearchBar extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+  }
+
   state = {
     query: ''
   };

@@ -8,8 +8,15 @@ import SearchBooksResults from './components/SearchBooksResults';
 
 class BooksApp extends React.Component {
   state = {
+    books: []
+  }
 
-  };
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books });
+      console.log(this.state.books);
+    });
+  }
 
   render() {
     return (
