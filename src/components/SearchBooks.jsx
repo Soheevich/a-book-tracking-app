@@ -11,7 +11,18 @@ class SearchBooks extends Component {
 
   searchBook = (author, title) => {
     BooksAPI.searchBook(author, title).then(books => {
-      this.setState(state => ({ foundBooks: books }));
+      const formattedBooks = books.items.map((book) => {
+        return {
+          bookshelf: null,
+          id: book.id,
+          title: book.volumeInfo.title,
+          authors: book.volumeInfo.authors,
+          thumbnail: book.volumeInfo.imageLinks ?
+            book.volumeInfo.imageLinks.thumbnail :
+            null
+        }
+      });
+      this.setState(state => ({ foundBooks: formattedBooks }));
       console.log(this.state.foundBooks);
     });
   }
@@ -22,7 +33,7 @@ class SearchBooks extends Component {
         <SearchBooksBar
           onBookSearch={this.searchBook}
         />
-        <SearchBooksResults booksList={this.state.books}/>
+        <SearchBooksResults booksList={this.state.foundBooks}/>
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
-import * as BooksAPI from './BooksAPI';
+import { Route } from 'react-router-dom';
 import './App.css';
 import ListBooks from './components/ListBooks';
 import SearchBooks from './components/SearchBooks';
@@ -13,13 +12,8 @@ class BooksApp extends Component {
   };
 
   componentDidMount = () => {
-    // BooksAPI.getAll().then((books) => {
-    //   this.setState({ books });
-    //   console.log(this.state.books);
-    // });
-
     // BooksAPI.update(book, shelf);
-    console.log(this.state.books)
+    // console.log(this.state.books)
   };
 
   addBook = (book) => {
