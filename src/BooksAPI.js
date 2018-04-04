@@ -33,14 +33,8 @@ export const update = (book, shelf) =>
     body: JSON.stringify({ shelf })
   }).then(res => res.json())
 
-export const searchInTitle = (query) =>
-  fetch(`${apiGoogle}?q=intitle:${query}&maxResults=20`, {
-    method: 'GET'
-  }).then(res => res.json())
-    .then(data => data.items)
-
-export const searchInAuthor = (query) =>
-  fetch(`${apiGoogle}?q=inauthor:${query}&maxResults=20`, {
+export const searchBook = (author, title) =>
+  fetch(`${apiGoogle}?q=${title}+inauthor:${author}&maxResults=20`, {
     method: 'GET'
   }).then(res => res.json())
     .then(data => data.items)

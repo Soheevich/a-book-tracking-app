@@ -9,17 +9,10 @@ class SearchBooks extends Component {
     foundBooks: [],
   }
 
-  searchInTitle(book) {
-    BooksAPI.searchInTitle(book).then((books) => {
-      // this.setState({ foundBooks: books });
-      console.log(books);
-    });
-  }
-
-  searchInAuthor(book) {
-    BooksAPI.searchInAuthor(book).then((books) => {
-      // this.setState({ foundBooks: books });
-      console.log(books);
+  searchBook = (author, title) => {
+    BooksAPI.searchBook(author, title).then(books => {
+      this.setState(state => ({ foundBooks: books }));
+      console.log(this.state.foundBooks);
     });
   }
 
@@ -27,8 +20,7 @@ class SearchBooks extends Component {
     return (
       <div className="search-books">
         <SearchBooksBar
-          onTitleSearch={this.searchInTitle}
-          onAuthorSearch={this.searchInAuthor}
+          onBookSearch={this.searchBook}
         />
         <SearchBooksResults booksList={this.state.books}/>
       </div>

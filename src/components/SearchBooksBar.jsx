@@ -13,13 +13,13 @@ class SearchBar extends Component {
   updateTitle = title => {
     this.setState({ title });
 
-    if (title !== '') this.props.onTitleSearch(title);
+    if (title !== '') this.props.onBookSearch(this.state.author, title);
   };
 
   updateAuthor = author => {
     this.setState({ author });
 
-    if (author !== '') this.props.onAuthorSearch(author);
+    if (author !== '') this.props.onBookSearch(author, this.state.title);
   };
 
   render() {
