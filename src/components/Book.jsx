@@ -22,7 +22,9 @@ const Book = (props) => {
       </div>
       <div className="book-title">{props.title}</div>
       <div className="book-authors">
-      { props.authors && props.authors[0] + (props.authors[1] ? " " + props.authors[1] : "") }
+      { props.authors && props.authors[0] }
+      <br/>
+      { (props.authors && props.authors.length > 1) && props.authors[1] }
       </div>
     </div>
   );
