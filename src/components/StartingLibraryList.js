@@ -41,7 +41,7 @@ const books = [
   },
   {
     bookshelf: 'read',
-    id: 'Igx0aWvzc34C',
+    id: 'wLQrDwAAQBAJ',
     title: 'Love of Life & Other Stories',
     authors: ['Jack London'],
     thumbnail:
