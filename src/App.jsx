@@ -11,15 +11,35 @@ class BooksApp extends Component {
     books
   };
 
-  changeShelf = (shelf, id, title, authors, thumbnail) => {
-    this.setState((prevState, props) => {
-      return {books: prevState.books.map((book) => 
-        book.id === id ? (
-        book.bookshelf = shelf,
-        book) :
-        book
-      )};
-    });
+  changeShelf = (bookshelf, id, title, authors, thumbnail) => {
+    if (bookshelf === 'none') {
+      this.setState((prevState, props) => {
+        return {books: prevState.books.filter((book) => {
+          return book.id !== id;
+        })};
+      });
+    } else if (this.state.books.findIndex((book) => book.id === id) > -1) {
+      this.setState((prevState, props) => {
+        return {books: prevState.books.map((book) => 
+          book.id === id ? (
+          book.bookshelf = bookshelf,
+          book) :
+          book
+        )};
+      });
+    } else {
+      this.setState((prevState, props) => {
+        return {books: prevState.books.concat(
+          {
+            bookshelf,
+            id,
+            title,
+            authors,
+            thumbnail
+          }
+        )};
+      });
+    }
   }
 
   render() {
@@ -39,6 +59,7 @@ class BooksApp extends Component {
           render={({ history }) => (
             <SearchBooks
               onSearchBook={this.searchBook}
+              onShelfChange={this.changeShelf}
             />
           )}
         />
