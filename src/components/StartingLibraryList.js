@@ -1,65 +1,65 @@
 const books = [
   {
-    bookshelf: 'Currently Reading',
+    bookshelf: 'currentlyReading',
     id: '_oG_iTxP1pIC',
     title: 'Flowers for Algernon',
-    authors: 'Daniel Keyes',
+    authors: ['Daniel Keyes'],
     thumbnail:
       'http://books.google.com/books/content?id=_oG_iTxP1pIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
   },
   {
-    bookshelf: 'Currently Reading',
+    bookshelf: 'currentlyReading',
     id: 'Kz0vseLs4JcC',
     title: 'The Grizzly King',
-    authors: 'James Oliver Curwood',
+    authors: ['James Oliver Curwood'],
     thumbnail:
       'http://books.google.com/books/content?id=Kz0vseLs4JcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
   },
   {
-    bookshelf: 'Want to Read',
+    bookshelf: 'wantToRead',
     id: 's-QzccStux4C',
     title: 'Blood Meridian',
-    authors: 'Cormac McCarthy',
+    authors: ['Cormac McCarthy'],
     thumbnail:
       'http://books.google.com/books/content?id=s-QzccStux4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
   },
   {
-    bookshelf: 'Want to Read',
+    bookshelf: 'wantToRead',
     id: 'bIOu6k8a1C4C',
     title: 'Last Exit to Brooklyn',
-    authors: 'Hubert Selby',
+    authors: ['Hubert Selby'],
     thumbnail:
       'http://books.google.com/books/content?id=bIOu6k8a1C4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
   },
   {
-    bookshelf: 'Want to Read',
+    bookshelf: 'wantToRead',
     id: 'Igx0aWvzc34C',
     title: 'All quiet on the western front and related readings',
-    authors: 'Erich Maria Remarque',
+    authors: ['Erich Maria Remarque'],
     thumbnail:
       'http://books.google.com/books/content?id=Igx0aWvzc34C&printsec=frontcover&img=1&zoom=1&source=gbs_api'
   },
   {
-    bookshelf: 'Read',
+    bookshelf: 'read',
     id: 'Igx0aWvzc34C',
     title: 'Love of Life & Other Stories',
-    authors: 'Jack London',
+    authors: ['Jack London'],
     thumbnail:
       'http://books.google.com/books/content?id=wLQrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
   },
   {
-    bookshelf: 'Read',
+    bookshelf: 'read',
     id: 'LLWMswEACAAJ',
     title: 'The good soldier Švejk and his fortunes in the World War',
-    authors: 'Jaroslav Hašek',
+    authors: ['Jaroslav Hašek'],
     thumbnail:
       'http://books.google.com/books/content?id=LLWMswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
   },
   {
-    bookshelf: 'Read',
+    bookshelf: 'read',
     id: 'ChlOAwAAQBAJ',
     title: 'The Name of the Rose',
-    authors: 'Umberto Eco',
+    authors: ['Umberto Eco'],
     thumbnail:
       'http://books.google.com/books/content?id=ChlOAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
   },

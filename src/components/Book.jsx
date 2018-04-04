@@ -1,33 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Book = (props) => {
-  return (
-    <div className="book">
-      <div className="book-top">
-        <div
-          className="book-cover"
-          style={{ width: 128, height: 193, backgroundImage: `url(${props.thumbnail})` }}
-        />
-        <div className="book-shelf-changer">
-          <select>
-            <option value="none" disabled>
-              Move to...
-            </option>
-            <option value="currentlyReading">Currently Reading</option>
-            <option value="wantToRead">Want to Read</option>
-            <option value="read">Read</option>
-            <option value="none">None</option>
-          </select>
+class Book extends Component {
+  state = {
+    value: this.props.bookshelf ? this.props.bookshelf : ''
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    this.setState({value: event.target.value});
+    this.props.onShelfChange(
+      event.target.value,
+      this.props.id,
+      this.props.title,
+      this.props.authors,
+      this.props.thumbnail
+    );
+  }
+
+  render() {
+    return (
+      <div className="book">
+        <div className="book-top">
+          <div
+            className="book-cover"
+            style={{ width: 128, height: 193, backgroundImage: `url(${this.props.thumbnail})` }}
+          />
+          <div className="book-shelf-changer">
+            <select value={this.state.value} onChange={this.handleChange}>
+              <option value="none" disabled>
+                Move to...
+              </option>
+              <option value="currentlyReading">Currently Reading</option>
+              <option value="wantToRead">Want to Read</option>
+              <option value="read">Read</option>
+              <option value="none">None</option>
+            </select>
+          </div>
+        </div>
+        <div className="book-title">{this.props.title}</div>
+        <div className="book-authors">
+        { this.props.authors && this.props.authors[0] }
+        <br/>
+        { (this.props.authors && this.props.authors.length > 1) && this.props.authors[1] }
         </div>
       </div>
-      <div className="book-title">{props.title}</div>
-      <div className="book-authors">
-      { props.authors && props.authors[0] }
-      <br/>
-      { (props.authors && props.authors.length > 1) && props.authors[1] }
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Book;
