@@ -1,39 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import ListBooks from './components/ListBooks';
 import SearchBooks from './components/SearchBooks';
+import books from './components/StartingLibraryList';
 
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
-    books: [],
-  }
+    books
+  };
 
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books });
-      console.log(this.state.books);
-    });
-  }
+  componentDidMount = () => {
+    // BooksAPI.getAll().then((books) => {
+    //   this.setState({ books });
+    //   console.log(this.state.books);
+    // });
 
-  addBook(book) {
+    // BooksAPI.update(book, shelf);
+    console.log(this.state.books)
+  };
+
+  addBook = (book) => {
     this.setState((prevState, book) => {
-      return {books: prevState.books.push(book)};
+      return { books: prevState.books.concat(book) };
     });
-  }
+  };
 
   render() {
     return (
       <div className="app">
-        <Route exact path="/" render={() => (
-            <ListBooks />
-          )}
+        <Route
+          exact
+          path="/"
+          render={() => <ListBooks booksList={this.state.books} />}
         />
-        <Route path="/search" render={({ history }) => (
+        <Route
+          path="/search"
+          render={({ history }) => (
             <SearchBooks
-              onAddBook={(book) => {
+              onAddBook={book => {
                 this.addBook(book);
                 history.push('/');
               }}
