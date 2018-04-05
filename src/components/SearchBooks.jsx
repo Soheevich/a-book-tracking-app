@@ -11,13 +11,11 @@ class SearchBooks extends Component {
     foundBooks: []
   }
 
-  update = (author, title) => {
-    this.setState({ author, title },
-    () => {
+  update = (type, value) => {
+    this.setState({ [type]: value }, () => {
       if (this.state.author || this.state.title) {
         this.searchBook(this.state.author, this.state.title);
       } else {
-        console.log('clear books');
         this.setState(state => ({ foundBooks: [] }));
       }
     });

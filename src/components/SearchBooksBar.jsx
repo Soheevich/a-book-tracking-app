@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -13,13 +13,13 @@ const SearchBar = (props) => {
           type="text"
           placeholder="Search by title"
           value={props.title}
-          onChange={(event) => props.onUpdate('', event.target.value)}
+          onChange={(event) => props.onUpdate('title', event.target.value)}
         />
         <input
           type="text"
           placeholder="Search by author"
           value={props.author}
-          onChange={(event) => props.onUpdate(event.target.value, '')}
+          onChange={(event) => props.onUpdate('author', event.target.value)}
         />
       </div>
     </div>
