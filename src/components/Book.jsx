@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 class Book extends Component {
   state = {
     value: this.props.bookshelf ? this.props.bookshelf : ''
+  };
+
+  componentDidMount() {
+    // console.log(this.props);
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     event.preventDefault();
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
     this.props.onShelfChange(
       event.target.value,
       this.props.id,
@@ -15,7 +21,7 @@ class Book extends Component {
       this.props.authors,
       this.props.thumbnail
     );
-  }
+  };
 
   render() {
     return (
@@ -23,7 +29,11 @@ class Book extends Component {
         <div className="book-top">
           <div
             className="book-cover"
-            style={{ width: 128, height: 193, backgroundImage: `url(${this.props.thumbnail})` }}
+            style={{
+              width: 128,
+              height: 193,
+              backgroundImage: `url(${this.props.thumbnail})`
+            }}
           />
           <div className="book-shelf-changer">
             <select value={this.state.value} onChange={this.handleChange}>
@@ -39,13 +49,24 @@ class Book extends Component {
         </div>
         <div className="book-title">{this.props.title}</div>
         <div className="book-authors">
-        { this.props.authors && this.props.authors[0] }
-        <br/>
-        { (this.props.authors && this.props.authors.length > 1) && this.props.authors[1] }
+          {this.props.authors && this.props.authors[0]}
+          <br />
+          {this.props.authors &&
+            this.props.authors.length > 1 &&
+            this.props.authors[1]}
         </div>
       </div>
     );
   }
 }
+
+Book.propTypes = {
+  authors: PropTypes.arrayOf(PropTypes.string),
+  bookshelf: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onShelfChange: PropTypes.func.isRequired
+};
 
 export default Book;

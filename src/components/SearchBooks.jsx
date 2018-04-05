@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SearchBooksBar from './SearchBooksBar';
 import SearchBooksResults from './SearchBooksResults';
 import * as BooksAPI from '../BooksAPI';
+import PropTypes from 'prop-types';
+
 
 
 class SearchBooks extends Component {
@@ -22,22 +24,22 @@ class SearchBooks extends Component {
   }
 
   searchBook = (author, title) => {
-    console.log(
-      `?q=${title ? title : ''}+inauthor:${author ? author : ''}&maxResults=20`
-    );
+    // console.log(
+    //   `?q=${title ? title : ''}+inauthor:${author ? author : ''}&maxResults=20`
+    // );
     BooksAPI.searchBook(author, title).then(books => {
       let formattedBooks;
 
       if (books.items) {
         formattedBooks = books.items.map(book => {
           return {
-            bookshelf: null,
+            bookshelf: 'none',
             id: book.id,
             title: book.volumeInfo.title,
             authors: book.volumeInfo.authors,
             thumbnail: book.volumeInfo.imageLinks
               ? book.volumeInfo.imageLinks.thumbnail
-              : null
+              : 'none'
           };
         });
       } else {
@@ -63,5 +65,9 @@ class SearchBooks extends Component {
     );
   }
 }
+
+SearchBooks.propTypes = {
+  onShelfChange: PropTypes.func.isRequired,
+};
 
 export default SearchBooks;

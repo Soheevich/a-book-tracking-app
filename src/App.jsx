@@ -58,7 +58,6 @@ class BooksApp extends Component {
           path="/search"
           render={({ history }) => (
             <SearchBooks
-              onSearchBook={this.searchBook}
               onShelfChange={this.changeShelf}
             />
           )}

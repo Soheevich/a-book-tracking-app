@@ -26,4 +26,10 @@ const SearchBar = (props) => {
   );
 }
 
+SearchBar.propTypes = {
+  author: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onUpdate: PropTypes.func.isRequired
+};
+
 export default SearchBar;

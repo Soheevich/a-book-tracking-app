@@ -1,5 +1,7 @@
 import React from 'react';
 import Book from './Book';
+import PropTypes from 'prop-types';
+
 
 const SearchBooksResults = (props) => {
   return (
@@ -23,5 +25,10 @@ const SearchBooksResults = (props) => {
     </div>
   );
 }
+
+SearchBooksResults.propTypes = {
+  booksList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onShelfChange: PropTypes.func.isRequired
+};
 
 export default SearchBooksResults;
