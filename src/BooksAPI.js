@@ -34,7 +34,7 @@ export const update = (book, shelf) =>
   }).then(res => res.json())
 
 export const searchBook = (author, title) =>
-  fetch(`${apiGoogle}?q=${title}+inauthor:${author}&maxResults=20`, {
+  fetch(`${apiGoogle}?q=${title ? title : ''}+inauthor:${author ? author : ''}&maxResults=20`, {
     method: 'GET'
   }).then(res => res.json())
     .then(data => data)
