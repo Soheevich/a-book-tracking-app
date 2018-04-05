@@ -38,3 +38,14 @@ export const searchBook = (author, title) =>
     method: 'GET'
   }).then(res => res.json())
     .then(data => data)
+
+// export const search = (query) =>
+//   fetch(`${api}/search`, {
+//     method: 'POST',
+//     headers: {
+//       ...headers,
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ query })
+//   }).then(res => res.json())
+//     .then(data => data.books)
