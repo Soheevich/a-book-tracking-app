@@ -11,8 +11,6 @@ class Book extends Component {
 
   componentWillMount() {
     BooksAPI.get(this.state.book.id).then((book) => {
-      console.log('book shelf', book.shelf);
-      console.log(book.shelf !== 'none');
       if (book.shelf !== 'none') {
         this.setState({value: book.shelf});
       }
