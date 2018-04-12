@@ -4,12 +4,21 @@ import './App.css';
 import ListBooks from './components/ListBooks';
 import SearchBooks from './components/SearchBooks';
 import books from './components/StartingLibraryList';
+import  * as BooksAPI from './BooksAPI';
 
 
 class BooksApp extends Component {
   state = {
-    books
+    books: [],
   };
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      books.filter((book) => ;
+    });
+    console.log(BooksAPI.getToken());
+
+  }
 
   changeShelf = (bookshelf, id, title, authors, thumbnail) => {
     if (bookshelf === 'none') {

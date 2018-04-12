@@ -13,6 +13,10 @@ const headers = {
   'Authorization': token
 }
 
+export const getToken = () => {
+  return token;
+}
+
 export const get = (bookId) =>
   fetch(`${apiUdacity}/books/${bookId}`, { headers })
     .then(res => res.json())
