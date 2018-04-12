@@ -7,7 +7,7 @@ const SearchBooksResults = (props) => {
   return (
     <div className="search-books-results">
       <ol className="books-grid">
-        {props.booksList.length && (
+        {props.booksList.length > 0 && (
             props.booksList.map((book) => {
               return (
                 <li key={book.id}>

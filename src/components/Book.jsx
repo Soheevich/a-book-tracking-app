@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as BooksAPI from '../BooksAPI';
 
 
 class Book extends Component {
   state = {
     book: this.props.book,
-    value: this.props.book.shelf ? this.props.book.shelf : ''
+    value: 'none',
   };
 
-  componentDidMount() {
-    // console.log(this.props);
+  componentWillMount() {
+    BooksAPI.get(this.state.book.id).then((book) => {
+      console.log('book shelf', book.shelf);
+      console.log(book.shelf !== 'none');
+      if (book.shelf !== 'none') {
+        this.setState({value: book.shelf});
+      }
+    });
   }
 
   handleChange = event => {
@@ -37,7 +44,7 @@ class Book extends Component {
           />
           <div className="book-shelf-changer">
             <select value={this.state.value} onChange={this.handleChange}>
-              <option value="none" disabled>
+              <option value="move" disabled>
                 Move to...
               </option>
               <option value="currentlyReading">Currently Reading</option>
