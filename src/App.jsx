@@ -17,35 +17,9 @@ class BooksApp extends Component {
     })
   }
 
-  changeShelf = (shelf, id, title, authors, thumbnail) => {
-    if (shelf === 'none') {
-      this.setState((prevState, props) => {
-        return {books: prevState.books.filter((book) => {
-          return book.id !== id;
-        })};
-      });
-    } else if (this.state.books.findIndex((book) => book.id === id) > -1) {
-      this.setState((prevState, props) => {
-        return {books: prevState.books.map((book) => 
-          book.id === id ? (
-          book.shelf = shelf,
-          book) :
-          book
-        )};
-      });
-    } else {
-      this.setState((prevState, props) => {
-        return {books: prevState.books.concat(
-          {
-            shelf,
-            id,
-            title,
-            authors,
-            thumbnail
-          }
-        )};
-      });
-    }
+  changeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf).then((response) => console.log('update response', response));
+    
   }
 
   render() {

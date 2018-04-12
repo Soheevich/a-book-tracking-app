@@ -13,11 +13,7 @@ const BookShelf = (props) => {
             return (
               <li key={book.id}>
                 <Book
-                  shelf={book.shelf}
-                  id={book.id}
-                  title={book.title}
-                  authors={book.authors}
-                  thumbnail={book.imageLinks ? book.imageLinks.thumbnail : ''}
+                  book={book}
                   onShelfChange={props.onShelfChange}
                 />
               </li>

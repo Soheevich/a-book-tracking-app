@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 class Book extends Component {
   state = {
-    value: this.props.shelf ? this.props.shelf : ''
+    book: this.props.book,
+    value: this.props.book.shelf ? this.props.book.shelf : ''
   };
 
   componentDidMount() {
@@ -15,11 +16,8 @@ class Book extends Component {
     event.preventDefault();
     this.setState({ value: event.target.value });
     this.props.onShelfChange(
-      event.target.value,
-      this.props.id,
-      this.props.title,
-      this.props.authors,
-      this.props.thumbnail
+      this.state.book,
+      event.target.value
     );
   };
 
@@ -32,7 +30,9 @@ class Book extends Component {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url(${this.props.thumbnail})`
+              backgroundImage: `url(${this.props.book.imageLinks ?
+                                        this.props.book.imageLinks.thumbnail :
+                                        './icons/multiply.svg'})`
             }}
           />
           <div className="book-shelf-changer">
@@ -47,13 +47,13 @@ class Book extends Component {
             </select>
           </div>
         </div>
-        <div className="book-title">{this.props.title}</div>
+        <div className="book-title">{this.props.book.title}</div>
         <div className="book-authors">
-          {this.props.authors && this.props.authors[0]}
+          {this.props.book.authors && this.props.book.authors[0]}
           <br />
-          {this.props.authors &&
-            this.props.authors.length > 1 &&
-            this.props.authors[1]}
+          {this.props.book.authors &&
+            this.props.book.authors.length > 1 &&
+            this.props.book.authors[1]}
         </div>
       </div>
     );
@@ -61,11 +61,7 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-  authors: PropTypes.arrayOf(PropTypes.string),
-  shelf: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  book: PropTypes.object.isRequired,
   onShelfChange: PropTypes.func.isRequired
 };
 
