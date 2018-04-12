@@ -11,15 +11,9 @@ const SearchBar = (props) => {
       <div className="search-books-input-wrapper">
         <input
           type="text"
-          placeholder="Search by title"
-          value={props.title}
-          onChange={(event) => props.onUpdate('title', event.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Search by author"
-          value={props.author}
-          onChange={(event) => props.onUpdate('author', event.target.value)}
+          placeholder="Search"
+          value={props.query}
+          onChange={(event) => props.onUpdate(event.target.value)}
         />
       </div>
     </div>
@@ -27,8 +21,7 @@ const SearchBar = (props) => {
 }
 
 SearchBar.propTypes = {
-  author: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  query: PropTypes.string.isRequired,
   onUpdate: PropTypes.func.isRequired
 };
 

@@ -8,15 +8,14 @@ import PropTypes from 'prop-types';
 
 class SearchBooks extends Component {
   state = {
-    author: '',
-    title: '',
+    query: '',
     foundBooks: []
   }
 
-  update = (type, value) => {
-    this.setState({ [type]: value }, () => {
-      if (this.state.author || this.state.title) {
-        this.searchBook(this.state.author, this.state.title);
+  update = (value) => {
+    this.setState({ query: value }, () => {
+      if (this.state.query) {
+        this.searchBook(this.state.query);
       } else {
         this.setState(state => ({ foundBooks: [] }));
       }
@@ -24,28 +23,15 @@ class SearchBooks extends Component {
   }
 
   searchBook = (query) => {
-    // console.log(
-    //   `?q=${title ? title : ''}+inauthor:${author ? author : ''}&maxResults=20`
-    // );
     BooksAPI.search(query).then(books => {
-      let formattedBooks;
+      let foundedBooks;
 
-      if (books.items) {
-        formattedBooks = books.items.map(book => {
-          return {
-            bookshelf: 'none',
-            id: book.id,
-            title: book.volumeInfo.title,
-            authors: book.volumeInfo.authors,
-            thumbnail: book.volumeInfo.imageLinks
-              ? book.volumeInfo.imageLinks.thumbnail
-              : 'none'
-          };
-        });
+      if (books.length) {
+        foundedBooks = books;
       } else {
-        formattedBooks = [];
+        foundedBooks = [];
       }
-      this.setState(state => ({ foundBooks: formattedBooks }));
+      this.setState(state => ({ foundBooks: foundedBooks }));
     });
   }
 
@@ -53,8 +39,7 @@ class SearchBooks extends Component {
     return (
       <div className="search-books">
         <SearchBooksBar
-          author={this.state.author}
-          title={this.state.title}
+          query={this.state.query}
           onUpdate={this.update}
         />
         <SearchBooksResults
