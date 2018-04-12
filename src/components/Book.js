@@ -37,7 +37,7 @@ class Book extends Component {
               height: 193,
               backgroundImage: `url(${this.props.book.imageLinks ?
                                         this.props.book.imageLinks.thumbnail :
-                                        './icons/multiply.svg'})`
+                                        './media/multiply.svg'})`
             }}
           />
           <div className="book-shelf-changer">
