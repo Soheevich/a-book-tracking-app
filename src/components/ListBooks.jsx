@@ -13,17 +13,17 @@ const ListBooks = (props) => {
       <div className="list-books-content">
         <BookShelf
           bookShelfTitle="Currently Reading"
-          listOfBooks={props.booksList.filter(book => book.bookshelf === "currentlyReading")}
+          listOfBooks={props.booksList.filter(book => book.shelf === "currentlyReading")}
           onShelfChange={props.onShelfChange}
         />
         <BookShelf
           bookShelfTitle="Want to Read"
-          listOfBooks={props.booksList.filter(book => book.bookshelf === "wantToRead")}
+          listOfBooks={props.booksList.filter(book => book.shelf === "wantToRead")}
           onShelfChange={props.onShelfChange}
         />
         <BookShelf
           bookShelfTitle="Read"
-          listOfBooks={props.booksList.filter(book => book.bookshelf === "read")}
+          listOfBooks={props.booksList.filter(book => book.shelf === "read")}
           onShelfChange={props.onShelfChange}
         />
       </div>
