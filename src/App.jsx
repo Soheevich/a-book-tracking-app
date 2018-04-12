@@ -17,8 +17,8 @@ class BooksApp extends Component {
     })
   }
 
-  changeShelf = (bookshelf, id, title, authors, thumbnail) => {
-    if (bookshelf === 'none') {
+  changeShelf = (shelf, id, title, authors, thumbnail) => {
+    if (shelf === 'none') {
       this.setState((prevState, props) => {
         return {books: prevState.books.filter((book) => {
           return book.id !== id;
@@ -28,7 +28,7 @@ class BooksApp extends Component {
       this.setState((prevState, props) => {
         return {books: prevState.books.map((book) => 
           book.id === id ? (
-          book.bookshelf = bookshelf,
+          book.shelf = shelf,
           book) :
           book
         )};
@@ -37,7 +37,7 @@ class BooksApp extends Component {
       this.setState((prevState, props) => {
         return {books: prevState.books.concat(
           {
-            bookshelf,
+            shelf,
             id,
             title,
             authors,
