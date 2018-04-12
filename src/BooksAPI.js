@@ -1,6 +1,6 @@
 
 const apiUdacity = "https://reactnd-books-api.udacity.com";
-const apiGoogle = "https://www.googleapis.com/books/v1/volumes";
+// const apiGoogle = "https://www.googleapis.com/books/v1/volumes";
 
 
 // Generate a unique token for storing your bookshelf data on the backend server.
@@ -35,21 +35,24 @@ export const update = (book, shelf) =>
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ shelf })
-  }).then(res => res.json())
+  }).then(res => res.json()).catch(err => console.log('update error', err))
 
-export const searchBook = (author, title) =>
-  fetch(`${apiGoogle}?q=${title ? title : ''}+inauthor:${author ? author : ''}&maxResults=20`, {
-    method: 'GET'
+export const search = (query) =>
+  fetch(`${apiUdacity}/search`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ query })
   }).then(res => res.json())
-    .then(data => data)
+    .then(data => data.books)
 
-// export const search = (query) =>
-//   fetch(`${api}/search`, {
-//     method: 'POST',
-//     headers: {
-//       ...headers,
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ query })
+// I've made a function to search in Google Books
+// But I cannot POST anything on the Udacity's server
+
+// export const searchBook = (author, title) =>
+//   fetch(`${apiGoogle}?q=${title ? title : ''}+inauthor:${author ? author : ''}&maxResults=20`, {
+//     method: 'GET'
 //   }).then(res => res.json())
-//     .then(data => data.books)
+//     .then(data => data)

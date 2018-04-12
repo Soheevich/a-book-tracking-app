@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import ListBooks from './components/ListBooks';
 import SearchBooks from './components/SearchBooks';
-import books from './components/StartingLibraryList';
 import  * as BooksAPI from './BooksAPI';
 
 
@@ -12,12 +11,10 @@ class BooksApp extends Component {
     books: [],
   };
 
-  componentDidMount() {
+  componentWillMount() {
     BooksAPI.getAll().then((books) => {
-      books.filter((book) => ;
-    });
-    console.log(BooksAPI.getToken());
-
+      this.setState({books: books});
+    })
   }
 
   changeShelf = (bookshelf, id, title, authors, thumbnail) => {
@@ -52,6 +49,7 @@ class BooksApp extends Component {
   }
 
   render() {
+    console.log('component is mounted, list of books', this.state.books);
     return (
       <div className="app">
         <Route

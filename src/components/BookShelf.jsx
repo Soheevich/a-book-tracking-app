@@ -17,7 +17,7 @@ const BookShelf = (props) => {
                   id={book.id}
                   title={book.title}
                   authors={book.authors}
-                  thumbnail={book.thumbnail}
+                  thumbnail={book.imageLinks ? book.imageLinks.thumbnail : ''}
                   onShelfChange={props.onShelfChange}
                 />
               </li>

@@ -23,11 +23,11 @@ class SearchBooks extends Component {
     });
   }
 
-  searchBook = (author, title) => {
+  searchBook = (query) => {
     // console.log(
     //   `?q=${title ? title : ''}+inauthor:${author ? author : ''}&maxResults=20`
     // );
-    BooksAPI.searchBook(author, title).then(books => {
+    BooksAPI.search(query).then(books => {
       let formattedBooks;
 
       if (books.items) {
