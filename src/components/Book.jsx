@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class Book extends Component {
   state = {
-    value: this.props.bookshelf ? this.props.bookshelf : ''
+    value: this.props.shelf ? this.props.shelf : ''
   };
 
   componentDidMount() {
@@ -62,7 +62,7 @@ class Book extends Component {
 
 Book.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.string),
-  bookshelf: PropTypes.string.isRequired,
+  shelf: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
